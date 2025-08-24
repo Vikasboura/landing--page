@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Landing Page</title>
+  <style>
+    :root {
+      --bg: #0a0f1c;
+      --fg: #ffffff;
+      --muted: #a0b3d6;
+      --accent1: #6c5ce7;
+      --accent2: #00d1ff;
+      --accent3: #ff6ec7;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #122040, transparent 50%),
+                  radial-gradient(circle at bottom right, #101830, transparent 50%),
+                  linear-gradient(180deg, #060913, #0a0f1c);
+      color: var(--fg);
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 28, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+
+    header h2 {
+      font-size: 1.4rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 24px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--fg);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 1.2;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 30px;
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      color: var(--fg);
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #060913;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Simple background animation */
+    .animated-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent2), transparent);
+      animation: float 12s infinite ease-in-out;
+      opacity: 0.3;
+    }
+
+    .circle:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 15%; animation-delay: 0s; }
+    .circle:nth-child(2) { width: 400px; height: 400px; bottom: 10%; right: 20%; animation-delay: 4s; }
+    .circle:nth-child(3) { width: 200px; height: 200px; bottom: 25%; left: 25%; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-40px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Nova</h2>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="animated-bg">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
+    <div>
+      <h1>Build Bold Ideas. Ship Faster.</h1>
+      <p>A clean and modern landing page with smooth CSS animations. No frameworks, just pure HTML and CSS.</p>
+      <button class="cta-btn" onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="feature-card">
+      <h3>⚡ Fast Setup</h3>
+      <p>Deploy in minutes with zero JavaScript required.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🎨 Modern Design</h3>
+      <p>Beautiful gradients, animations, and responsive layout.</p>
+    </div>
+    <div class="feature-card">
+      <h3>🚀 Lightweight</h3>
+      <p>Optimized performance with minimal code overhead.</p>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>© <span id="year"></span> Nova. Crafted with ♥ using pure HTML & CSS.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
